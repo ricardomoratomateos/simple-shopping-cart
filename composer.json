@@ -6,6 +6,16 @@
             "email": "ricardomoratomateos@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Uvinum\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Uvinum\\Tests\\": "tests/"
+        }
+    },
     "require": {},
     "require-dev": {
         "phpunit/phpunit": "^8.3"
