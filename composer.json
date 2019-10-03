@@ -1,0 +1,13 @@
+{
+    "name": "ricardo/uvinum-test",
+    "authors": [
+        {
+            "name": "ricardomoratomateos",
+            "email": "ricardomoratomateos@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^8.3"
+    }
+}
