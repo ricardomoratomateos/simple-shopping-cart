@@ -11,10 +11,10 @@ class ProductTest extends TestCase
         return [
             'with-values' => [
                 'id' => 1,
-                'price' => 10,
+                'price' => 10.0,
                 'isInOffer' => true,
                 'minOfOfferUnities' => 3,
-                'priceInOffer' => 9,
+                'priceInOffer' => 9.0,
             ],
             'without-values' => [
                 'id' => null,
