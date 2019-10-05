@@ -14,7 +14,6 @@ class AddProductValidator implements CartValidatorInterface
      * @return void
      * @throws MaxOfProductsInCartException
      * @throws MaxUnitsOfProductInCartException
-     * @throws ProductAlreadyInCartException
      */
     public function validate(array $data)
     {
