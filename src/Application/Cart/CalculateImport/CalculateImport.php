@@ -3,6 +3,7 @@ namespace Uvinum\Application\Cart\CalculateImport;
 
 use Uvinum\Domain\Cart\Cart;
 use Uvinum\Domain\Cart\CartRepositoryInterface;
+use Uvinum\Domain\Currency\CurrencyRepositoryInterface;
 use Uvinum\Domain\Product\Product;
 
 class CalculateImport
@@ -10,16 +11,22 @@ class CalculateImport
     /** @var CartRepositoryInterface $cartRepository */
     private $cartRepository;
 
+    /** @var CurrencyRepositoryInterface $currencyRepository */
+    private $currencyRepository;
+
     public function __construct(
-        CartRepositoryInterface $cartRepository
+        CartRepositoryInterface $cartRepository,
+        CurrencyRepositoryInterface $currencyRepository
     ) {
         $this->cartRepository = $cartRepository;
+        $this->currencyRepository = $currencyRepository;
     }
     
     /**
      * @param CalculateImportRequest $request
      * @return CalculateImportResponse
      * @throws CartNotFoundException
+     * @throws CurrencyNotFoundException
      */
     public function __invoke(CalculateImportRequest $request): CalculateImportResponse
     {
@@ -45,6 +52,14 @@ class CalculateImport
             $import += $quantity * $price;
         }
 
-        return new CalculateImportResponse($import);
+        $transformedImport = null;
+        if ($request->transformImport()) {
+            $transformTo = $request->to();
+            $currencyValue = $this->currencyRepository->getValue($transformTo);
+
+            $transformedImport = $import * $currencyValue;
+        }
+
+        return new CalculateImportResponse($import, $transformedImport);
     }
 }
