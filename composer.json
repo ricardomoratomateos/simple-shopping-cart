@@ -8,12 +8,14 @@
     ],
     "autoload": {
         "psr-4": {
-            "Uvinum\\": "src/"
+            "Uvinum\\": "src/",
+            "Uvinum\\Command\\": "command/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Uvinum\\Tests\\": "tests/"
+            "Uvinum\\Tests\\": "tests/",
+            "Uvinum\\Command\\Test\\": "command/tests/"
         }
     },
     "require": {
