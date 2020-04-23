@@ -1,4 +1,4 @@
-# Uvinum -  Carrito de la compra
+# Carrito de la compra
 
 ### Suposiciones
 
